@@ -9,9 +9,11 @@ export default function Login() {
         <ul>
                 Username: 
                 <input className="username" placeholder="PaulthePlaceholder"/>
-                
+
                 Password:
                 <input className="password" placeholder="Password1234"/>
+
+                <button>Sign Up</button>
         </ul>
         </div>
     )
