@@ -2,13 +2,16 @@ import React from "react";
 import Header from './header.js'
 
 
-export default function login() {
+export default function Login() {
     return (
         <div>
             <Header />
         <ul>
-            <input className="username" placeholder="BobtheBuilder">Username</input>
-            <input className="password" placeholder="Password1234">Password</input>
+                Username: 
+                <input className="username" placeholder="PaulthePlaceholder"/>
+                
+                Password:
+                <input className="password" placeholder="Password1234"/>
         </ul>
         </div>
     )
