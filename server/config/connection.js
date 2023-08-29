@@ -1,8 +1,8 @@
-const {connect, connection, mongoose} = require('mongoose');
+const mongoose = require('mongoose');
+//edit mongodb link from mern shopping
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mern-shopping', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-const connectionString = mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/watchlistDB');
-
-connect(connectionString);
-
-module.exports = connection;
-
+module.exports = mongoose.connection;
