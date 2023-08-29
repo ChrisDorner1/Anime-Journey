@@ -16,6 +16,10 @@ export default function home() {
       <ul placeholder="List Three"> Have you watched anything on this list?
       <button>Open list</button>
       </ul>
+
+      <div>Want some Anime memes?
+        <Memes.Link />
+      </div>
     </div>
   );
 }
