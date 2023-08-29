@@ -1,4 +1,6 @@
 import React from "react";
+import Footer from "./footer"
+
 
 export default function home() {
   return (
@@ -19,6 +21,7 @@ export default function home() {
 
       <div>Want some Anime memes?
         <Memes.Link />
+        <Footer />
       </div>
     </div>
   );

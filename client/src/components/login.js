@@ -1,6 +1,6 @@
 import React from "react";
 import Header from './header.js'
-
+import Footer from "./footer"
 
 export default function Login() {
     return (
@@ -14,6 +14,7 @@ export default function Login() {
                 <input className="password" placeholder="Password1234"/>
 
                 <button>Sign Up</button>
+                <Footer />
         </ul>
         </div>
     )
