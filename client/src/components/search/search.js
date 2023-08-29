@@ -1,6 +1,6 @@
 import React from "react";
 import {useState} from "react"
-import Footer from "./footer"
+import Footer from "../footer/footer"
 
 export default function search() {
     return (

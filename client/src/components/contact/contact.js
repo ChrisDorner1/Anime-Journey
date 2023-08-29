@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "./footer"
+import Footer from "../footer/footer"
 
 
 export default function Contact() {
