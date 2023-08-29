@@ -2,29 +2,36 @@ import React, { useState, useEffect } from "react";
 import { fetchAnime } from "../utils/api";
 
 export default function Search() {
-  const [searchAnime, setSearchAnime] = useState("");
+  const [getAnime, setAnime] = useState("");
   const [animeData, setAnimeData] = useState([]);
 
   useEffect(() => {
-    if (searchAnime) {
-      fetchAnime(searchAnime)
+    if (getAnime) {
+      fetchAnime(getAnime)
         .then((data) => setAnimeData([data]))
         .catch((error) => console.error("Error fetching data", error));
     }
-  }, [searchAnime]);
+  }, [getAnime]);
 
   const handleSearchChange = (e) => {
-    setSearchAnime(e.target.value);
+    setAnime(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   return (
     <div>
+        <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Search for Anime!"
-        value={searchAnime}
+        value={getAnime}
         onChange={handleSearchChange}
       />
+      <button type='submit'>Search</button>
+      </form>
       <ul>
         {animeData.map((anime) => (
           <li key={anime.title}>
