@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <div>
-      <h1>{typedText}</h1>
+      <h1 className="glowing-text">{typedText}</h1>
     </div>
   );
 };
