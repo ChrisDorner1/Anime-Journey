@@ -20,7 +20,7 @@ export default function home() {
       </ul>
 
       <div>Want some Anime memes?
-        <Memes.Link />
+        {/* <Memes.Link /> */}
         <Footer />
       </div>
     </div>
