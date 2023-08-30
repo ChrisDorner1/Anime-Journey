@@ -7,7 +7,7 @@ export default function Login() {
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    border: '1px solid white',
+    border: "1px solid white",
     margin: "1rem",
   };
 
@@ -31,12 +31,20 @@ export default function Login() {
 
   return (
     <div style={divStyle}>
-        <h2>Log In</h2>
+      <h2>Log In</h2>
       <ul style={ulStyle}>
         Username:
-        <input style={inputStyle} className="username" placeholder="PaulthePlaceholder" />
+        <input
+          style={inputStyle}
+          className="username"
+          placeholder="PaulthePlaceholder"
+        />
         Password:
-        <input style={inputStyle} className="password" placeholder="Password1234" />
+        <input
+          style={inputStyle}
+          className="password"
+          placeholder="Password1234"
+        />
         <button>Sign Up</button>
       </ul>
     </div>
