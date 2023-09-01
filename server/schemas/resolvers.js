@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models/User');
 const { List } = require('../models/List');
+const { Anime } = require('../models/Anime');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -15,10 +16,9 @@ const resolvers = {
     },
 
     Mutation: {
-        addList: async (parent, {animes, name, createdBy}, context)=> {
+        addList: async (parent, {name, createdBy}, context)=> {
             if (context.user) {
                 const list = await List.create({
-                    animes,
                     name,
                     createdBy: context.user.username,
                 });
@@ -29,6 +29,18 @@ const resolvers = {
                 return list;
             }
             throw new AuthenticationError('Must Log in to make list');
+        },
+        addToWatchList: async (parent, { listId , animeName , animePoster }, context) => {
+            if(context.user) {
+                const newAnime = await Anime.create(
+                    {name: animeName, poster: animePoster},
+                )
+                const updatedAnimeList = await List.findOneAndUpdate(
+                    {_id: listId},
+                    { $addToSet: { animes: newAnime}}
+                )
+                return updatedAnimeList;
+            }
         },
         addUser: async (parent, {username, email, password}) => {
             const user = await User.create({username, email, password});
@@ -49,8 +61,18 @@ const resolvers = {
         },
         removeUser: async (parent, {userId}) => {
             return User.findOneAndDelete({ _id: userId});
+        },
+        updateList: async (parent, { listId , newName }, context) => {
+            if (context.user) {
+                const updatedList = List.findOneAndUpdate(
+                    {_id : listId},
+                    {name: newName},
+                    {new: true}
+                );
+                return updatedList;
+            }
         }
     }
 };
 
-module.exports = resolvers
+module.exports = resolvers;
