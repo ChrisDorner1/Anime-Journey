@@ -1,12 +1,12 @@
 import React from "react";
-import Footer from "./footer"
+import Footer from "../footer/footer"
+import Header from "../header/header";
+import { Link } from "react-router-dom";
 
-
-export default function home() {
+export default function Home() {
   return (
-    <div>
+    <header>
       <div>
-        Welcome
         <div placeholder="Username"></div>
       </div>
       <ul placeholder="List One"> Have you watched anything on this list?
@@ -18,11 +18,6 @@ export default function home() {
       <ul placeholder="List Three"> Have you watched anything on this list?
       <button>Open list</button>
       </ul>
-
-      <div>Want some Anime memes?
-        {/* <Memes.Link /> */}
-        <Footer />
-      </div>
-    </div>
+    </header>
   );
 }
