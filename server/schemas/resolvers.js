@@ -51,4 +51,6 @@ const resolvers = {
             return User.findOneAndDelete({ _id: userId});
         }
     }
-}
+};
+
+module.exports = resolvers

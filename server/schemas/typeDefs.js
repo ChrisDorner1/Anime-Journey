@@ -11,7 +11,7 @@ const typeDefs = gql`
 
     type List {
         _id: ID
-        animes: Array
+        animes: [String]
         name: String
         createdBy: String
     }
@@ -27,7 +27,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addList(animes: Array!, name: String!, createdBy: String!): List
+        addList(animes: String!, name: String!, createdBy: String!): List
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         removeUser(userId: ID!): User

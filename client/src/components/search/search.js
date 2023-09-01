@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Footer from "../footer/footer"
 
-import { fetchAnime } from "../utils/api";
+import { fetchAnime } from "../../utils/api";
 
 export default function Search() {
   const [getAnime, setAnime] = useState("");
