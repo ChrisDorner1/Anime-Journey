@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const List = require('./List');
 
 const userSchema = new Schema({
     username: {
@@ -20,7 +19,7 @@ const userSchema = new Schema({
         required: true, 
         minlength: 6,
     },
-    lists: [List.schema]
+    lists: [{type: Schema.Types.ObjectId, ref: 'List'}]
 });
 
 userSchema.pre('save', async function(next) {

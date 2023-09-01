@@ -1,12 +1,6 @@
 const { Schema, model } = require('mongoose');
-
 const listSchema = new Schema({
-    animes: {
-        type: Array,
-        required: true,
-        minLength: 1,
-        maxLength: 40,
-    },
+    animes:[{type: Schema.Types.ObjectId, ref: 'Anime'}],
     name: {
         type: String,
         required: true,
@@ -15,7 +9,7 @@ const listSchema = new Schema({
     createdBy: {
         type: String,
     }
-})
+});
 
 const List = model('List', listSchema);
 

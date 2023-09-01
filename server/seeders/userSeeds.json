@@ -1,0 +1,52 @@
+[
+    {
+        "username": "Gandalf The Grey",
+        "email": "gandalf@gmail.com",
+        "password": "password1"
+    },
+    {
+        "username": "Levi Ackerman",
+        "email": "levi@gmail.com",
+        "password": "password2"
+    },
+    {
+        "username": "Naruto Uzumaki",
+        "email": "naruto@gmail.com",
+        "password": "password3"
+    },
+    {
+        "username": "Roy Mustang",
+        "email": "roymustang@gmail.com",
+        "password": "password4"
+    },
+    {
+        "username": "Harry Potter",
+        "email": "harrypottah@gmail.com",
+        "password": "password5"
+    },
+    {
+        "username": "Sergio Kitchens",
+        "email": "gunnawunna@gmail.com",
+        "password": "password6"
+    },
+    {
+        "username": "Carmy Bear",
+        "email": "thebear@gmail.com",
+        "password": "password7"
+    },
+    {
+        "username": "Dr Hampter",
+        "email": "hampter@gmail.com",
+        "password": "password8"
+    },
+    {
+        "username": "Jamie Tart",
+        "email": "jtart@gmail.com",
+        "password": "password9"
+    },
+    {
+        "username": "Monkey D Luffy",
+        "email": "kingofdapirates@gmail.com",
+        "password": "password10"
+    }
+]
