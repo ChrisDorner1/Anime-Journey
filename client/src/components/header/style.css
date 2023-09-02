@@ -1,0 +1,14 @@
+.header {
+    
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid white;
+    padding: .5rem;
+}
+
+a:hover {
+    color: darkorchid;
+  }

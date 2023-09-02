@@ -1,11 +1,36 @@
 * {
   box-sizing: border-box;
   background-color: black;
-  /* background-image: url(./assets/images/akatsukicloud.jpg); */
   color: white;
 }
 
+#root {
+  background-image: url(./assets/images/city.gif);
+  background-position: initial;
+  background-size: contain;
+  height: 100vh;
+  width: 100vw;
+}
+
+.app {
+  background-color: transparent;
+  opacity: .9;
+  flex-grow: 1;
+}
+
+.header {
+  background-color: transparent;
+  opacity: 1;
+  top: 0;
+  z-index: 2;
+}
+
+h1.glowing-text {
+  background-color: transparent;
+}
+
 body {
+  background-image: url(./assets/images/backdrop.gif));
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -28,22 +53,15 @@ div {
   padding: 1rem;
 }
 
-div.App {
-    /* background-image: url(./assets/images/akatsukicloud.jpg); */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
 ul {
   margin: 1rem;
   padding: 0;
 }
 
-footer {
+div.footer {
   padding: .5rem;
   text-align: center;
   margin-top: auto;
+  bottom: 0;
+  z-index: 2;
 }
