@@ -4,20 +4,21 @@ const url = 'https://api.jikan.moe/v4/anime';
 
 export const fetchAnime = async (animeId) => {
     try {
-        const response = await axios.get(`${url}/anime/${animeId}`);
+        const response = await axios.get(`${url}/${animeId}`);
         if (!response.data) {
             throw new Error('No data returned');
         }
 
-        const { title, image, episodes, status } = response.data.data;
+        const { title, image_url, episodes, status } = response.data;
 
         return {
-            title: title?.title || true,
-            imageURL: image?.jpg?.image_url || true,
-            episodes: episodes || true,
-            status: status || true
+            title: title || "",
+            imageURL: image_url || "",
+            episodes: episodes || "",
+            status: status || ""
         };
     } catch (err) {
         console.error('Error fetching data', err);
+        throw err;
     }
 };

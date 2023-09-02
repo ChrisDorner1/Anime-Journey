@@ -4,44 +4,48 @@ import "./App.css";
 import Home from "./components/homepage/homepage";
 import Header from "./components/header/header";
 import Login from "./components/login/login.js";
+import Contact from "./components/contact/contact.js";
 import Footer from "./components/footer/footer.js";
-import { watchlist } from "./components/watchlist/watchlist";
-import { search } from "./components/search/search";
+import Search from "./components/search/search.js";
+import List from "./components/watchlist/watchlist.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 const client = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache(),
 });
 
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
-  const [showFooter, setShowFooter] = useState(false);
+  const [typingDone, setTypingDone] = useState(false);
+  const headerText = "Welcome To Anime Journey";
 
   useEffect(() => {
-    const loginTimer = setTimeout(() => {
-      setShowLogin(true);
-    }, 3500);
-
-    const footerTimer = setTimeout(() => {
-      setShowFooter(true);
-    }, 4500);
-
-    return () => {
-      clearTimeout(loginTimer);
-      clearTimeout(footerTimer);
-    };
+    let charIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (charIndex === headerText.length) {
+        clearInterval(typingInterval);
+        setTypingDone(true);
+      }
+      charIndex++;
+    }, 100);
+    return () => clearInterval(typingInterval);
   }, []);
 
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="App">
+        <div className="app">
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />} /> 
-            <Route path="Login" element={<Login/>}className="grow-animation"> {showLogin}</Route>
-          </Routes>
-          <Footer/>
+          {typingDone && (
+            <Routes className="nav">
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/list" element={<List />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          )}
+          {typingDone && <Footer />}
         </div>
       </Router>
     </ApolloProvider>

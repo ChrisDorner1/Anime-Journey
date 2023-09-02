@@ -1,13 +1,10 @@
 import React from "react";
-import Footer from "../footer/footer"
+import "./style.css";
 
-
-export default function watch() {
+export default function list() {
     return (
-        <div>
-            <ol>
-            </ol>
-        <Footer />
+        <div className="list">
+            <p>Watch List</p>
         </div>
     )
 }
