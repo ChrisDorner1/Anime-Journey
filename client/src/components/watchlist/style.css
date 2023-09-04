@@ -6,10 +6,12 @@
     border: 1px solid white;
 }
 
-button {
+.list-column {
+    display:flex;
+    flex-direction: column;
     margin-bottom: auto;
 }
 
-ul {
-    margin-bottom: auto;
+.list-column a {
+    text-decoration: none;
 }

@@ -3,12 +3,12 @@ import "./style.css";
 
 export default function List() {
   const [newListName, setNewListName] = useState("");
-  const [lists, setLists] = useState(["Watch List"]);
+  const [lists, setLists] = useState([{ name: "Watch List", link: "#" }]);
   const [isCreatingList, setIsCreatingList] = useState(false);
 
   const handleCreateList = () => {
     if (newListName.trim() !== "") {
-      setLists([...lists, newListName]);
+      setLists([...lists, { name: newListName, link: "#" }]);
       setNewListName("");
       setIsCreatingList(false);
     }
@@ -37,11 +37,13 @@ export default function List() {
           <button onClick={handleCreateList}>Create List</button>
         </div>
       )}
-      <ul>
-        {lists.map((listName, index) => (
-          <li key={index}>{listName}</li>
+      <div className="list-column">
+        {lists.map((list, index) => (
+          <div key={index}>
+            <a href={list.link}>{list.name}</a>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

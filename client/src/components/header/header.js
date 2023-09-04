@@ -27,6 +27,9 @@ const Header = () => {
       {showNavLinks && (
         <div className="nav">
           <ul className='nav-links'>
+            <Link to="/" className='btn'>Home</Link>
+          </ul>
+          <ul className='nav-links'>
             <Link to="/search" className='btn'>Search</Link>
           </ul>
           <ul className='nav-links'>
@@ -34,6 +37,9 @@ const Header = () => {
           </ul>
           <ul className='nav-links'>
             <Link to="/contact">Contact</Link>
+          </ul>
+          <ul className='nav-links'>
+            <Link to="/login" className='btn'>Login</Link>
           </ul>
         </div>
       )}

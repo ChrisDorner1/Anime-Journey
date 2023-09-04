@@ -36,8 +36,6 @@ export default function Search() {
   };
 
   const handleAddToList = (animeTitle) => {
-    // Implement your logic here to add the selected anime to your list.
-    // You can use state or other methods to manage your list of selected anime.
     console.log(`Added ${animeTitle} to the list.`);
   };
 
@@ -58,10 +56,10 @@ export default function Search() {
         ) : error ? (
           <p>Error: {error}</p>
         ) : (
-          <ul>
+          <ul className="lists">
             {animeData.map((anime) => (
               <li key={anime.title}>
-                <img src={anime.imageURL} alt={anime.title} />
+                <img src={anime.title} alt={anime.image_url} />
                 <h3>{anime.title}</h3>
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
