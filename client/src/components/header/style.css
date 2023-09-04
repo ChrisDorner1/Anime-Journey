@@ -1,13 +1,17 @@
 .header {
-    
+    margin-bottom: auto;
 }
 
 .nav {
     display: flex;
     flex-direction: row;
-    border: 1px solid white;
+    background-color: transparent;
     padding: .5rem;
 }
+
+.nav-links a {
+    text-decoration: none;
+  }
 
 a:hover {
     color: darkorchid;

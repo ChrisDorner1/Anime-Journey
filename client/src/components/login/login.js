@@ -11,7 +11,7 @@ export default function Login() {
         <input className="login-input username" placeholder="PaulthePlaceholder" />
         Password:
         <input className="login-input password" placeholder="Password1234" />
-        <button>Sign Up</button>
+        <button>Log In</button>
       </ul>
     </div>
   );

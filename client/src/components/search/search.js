@@ -20,8 +20,8 @@ export default function Search() {
       setError(null);
       fetchAnime(getAnime)
         .then((data) => {
-          if (data) {
-            setAnimeData([data]);
+          if (data.length > 0) {
+            setAnimeData(data);
           } else {
             console.error("No data received from the API.");
           }
@@ -33,6 +33,10 @@ export default function Search() {
           setLoading(false);
         });
     }
+  };
+
+  const handleAddToList = (animeTitle) => {
+    console.log(`Added ${animeTitle} to the list.`);
   };
 
   return (
@@ -52,13 +56,16 @@ export default function Search() {
         ) : error ? (
           <p>Error: {error}</p>
         ) : (
-          <ul>
+          <ul className="lists">
             {animeData.map((anime) => (
               <li key={anime.title}>
-                <img src={anime.imageURL} alt={anime.title} />
+                <img src={anime.title} alt={anime.image_url} />
                 <h3>{anime.title}</h3>
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
+                <button onClick={() => handleAddToList(anime.title)}>
+                  Add to List
+                </button>
               </li>
             ))}
           </ul>
