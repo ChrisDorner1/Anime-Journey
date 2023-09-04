@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  background-color: black;
   color: white;
 }
 
@@ -30,7 +29,7 @@ h1.glowing-text {
 }
 
 body {
-  background-image: url(./assets/images/backdrop.gif));
+  background-image: url(./assets/images/city.gif);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -53,9 +52,23 @@ div {
   padding: 1rem;
 }
 
+button {
+  margin: 1rem;
+  color: black
+}
+
+input {
+  margin: 1rem;
+  color: black
+}
+
 ul {
   margin: 1rem;
   padding: 0;
+}
+
+li {
+  margin: 1rem;
 }
 
 div.footer {

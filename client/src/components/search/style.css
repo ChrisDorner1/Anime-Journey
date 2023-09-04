@@ -1,4 +1,20 @@
 .search {
+    background-color: black;
+    height: 60vh;
+    width: 80vh;
     padding: 1rem;
     border: 1px solid white;
-}
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .results {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 1rem;
+  }
+  
+  form {
+    margin: 1rem;
+  }
+  

@@ -1,4 +1,7 @@
 .contact {
+    background-color: black;
+    height: 60vh;
+    width: 80vh;
     padding: 1rem;
     border: 1px solid white;
 }

@@ -20,8 +20,8 @@ export default function Search() {
       setError(null);
       fetchAnime(getAnime)
         .then((data) => {
-          if (data) {
-            setAnimeData([data]);
+          if (data.length > 0) {
+            setAnimeData(data);
           } else {
             console.error("No data received from the API.");
           }
@@ -33,6 +33,12 @@ export default function Search() {
           setLoading(false);
         });
     }
+  };
+
+  const handleAddToList = (animeTitle) => {
+    // Implement your logic here to add the selected anime to your list.
+    // You can use state or other methods to manage your list of selected anime.
+    console.log(`Added ${animeTitle} to the list.`);
   };
 
   return (
@@ -59,6 +65,9 @@ export default function Search() {
                 <h3>{anime.title}</h3>
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
+                <button onClick={() => handleAddToList(anime.title)}>
+                  Add to List
+                </button>
               </li>
             ))}
           </ul>

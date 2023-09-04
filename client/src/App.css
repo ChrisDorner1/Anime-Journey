@@ -79,6 +79,10 @@
   animation: glow 2s infinite;
 }
 
+Routes.nav {
+  background-color: black;
+}
+
 footer {
   padding: .5rem;
   text-align: center;

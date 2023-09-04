@@ -2,21 +2,23 @@ import axios from 'axios';
 
 const url = 'https://api.jikan.moe/v4/anime';
 
-export const fetchAnime = async (animeId) => {
+export const fetchAnime = async (query) => {
     try {
-        const response = await axios.get(`${url}/${animeId}`);
-        if (!response.data) {
+        const response = await axios.get(`${url}?q=${query}`);
+        if (!response.data || response.data.data.length === 0) {
             throw new Error('No data returned');
         }
 
-        const { title, image_url, episodes, status } = response.data;
+        const animeData = response.data.data;
 
-        return {
-            title: title || "",
-            imageURL: image_url || "",
-            episodes: episodes || "",
-            status: status || ""
-        };
+        const animeArray = animeData.map((anime) => ({
+            title: anime.title || "",
+            imageURL: anime.image_url || "",
+            episodes: anime.episodes || "",
+            status: anime.status || ""
+        }));
+
+        return animeArray;
     } catch (err) {
         console.error('Error fetching data', err);
         throw err;
