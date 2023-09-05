@@ -10,7 +10,13 @@ const WatchListProvider = ({value = [], ...props}) => {
         name: '',
         createdBy: '',
     });
-    return <Provider value={[state, dispatch]} {...props} />;
+    const addAnimeToList = (anime) => {
+        dispatch({type: "ADD_TO_WATCH_LIST", payload: anime})
+    }
+    const addList = (name) => {
+        dispatch({type: "ADD_LIST", payload: name})
+    }
+    return <Provider value={{anime: state.anime, name: state.name, addAnimeToList, addList}} />;
 };
 
 const useListContext = () => {
