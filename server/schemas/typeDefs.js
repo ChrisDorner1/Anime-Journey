@@ -6,7 +6,7 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
-        lists: [List]!
+        lists: [List]
     }
 
     type List {
@@ -24,7 +24,7 @@ const typeDefs = gql`
     type Query {
         lists: [List]
         user(username: String!): User 
-        users: User
+        users: [User]
     }
 
     type Mutation {
@@ -32,7 +32,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         removeUser(userId: ID!): User
-        updateList(animes: [String], name: String, createdBy: String): List
+        updateList(listId: ID!, newName: String, createdBy: String): List
         addToWatchList(listId: ID!, animeName: String!, animePoster: String!): List
     }
 `;
