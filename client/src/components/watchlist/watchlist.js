@@ -4,8 +4,8 @@ import "./style.css";
 import { ADD_LIST } from "../../utils/actions";
 import reducer from '../../utils/reducers';
 
-
 export default function List() {
+
   const [newListName, setNewListName] = useState("");
   const [lists, setLists] = useState([{ name: "Watch List", link: "#" }]);
   const [isCreatingList, setIsCreatingList] = useState(false);

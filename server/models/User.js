@@ -19,7 +19,8 @@ const userSchema = new Schema({
         required: true, 
         minlength: 6,
     },
-    lists: [{type: Schema.Types.ObjectId, ref: 'List'}]
+    lists: [{type: Schema.Types.ObjectId, ref: 'List'}],
+    watched: [{type:Schema.Types.ObjectId}]
 });
 
 userSchema.pre('save', async function(next) {

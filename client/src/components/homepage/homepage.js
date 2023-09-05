@@ -12,23 +12,16 @@ export default function Home() {
     user = data.user;
   }
   return (
-    <>
-      <div className="home">
-        { user ? (
-          <>
-          <h2>Lists for {user.username}</h2>
-          {user.lists.map((list) => ( 
-            <div>
-                {list.anime.map(({name}, index) => (
-                  <div key={index} className="card px-1 py-1">
-                  <p>{name}</p>
-                  </div>
-                ))}
-                </div>
-          ))}
-          </>
-        ): null}
-      </div>
-    </>
+    <div className="home">
+    <ul placeholder="List One"> Have you watched anything on this list?
+    <button>Open list</button>
+    </ul>
+    <ul placeholder="List Two"> Have you watched anything on this list?
+    <button>Open list</button>
+    </ul>
+    <ul placeholder="List Three"> Have you watched anything on this list?
+    <button>Open list</button>
+    </ul>
+    </div>
   ) 
 };

@@ -52,6 +52,8 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   };
 
   return (
+    <div className="login">
+
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Label htmlFor="email">Email</Form.Label>
@@ -86,11 +88,11 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
         Incorrect login!
       </Alert>
       <Button onClick={handleLogin}>Log In</Button>
-      <Button variant="link" onClick={() => setShowSignUp(true)}>
+      <Button className="nav-link" href="/signup" variant="link" onClick={() => setShowSignUp(true)}>
         Don't have an account? Sign up here!
       </Button>
     </Form>
-
+    </div>
   );
 };
 

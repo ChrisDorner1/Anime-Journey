@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
-import { ADD_USER } from "../utils/mutations";
-
+import { ADD_USER } from "../../utils/mutations";
+import "./style.css";
 const SignUp = ({ setShowSignUp, setShowLogin }) => {
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -54,7 +54,7 @@ const SignUp = ({ setShowSignUp, setShowLogin }) => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form className="signup" noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Label htmlFor="username">Username</Form.Label>
         <Form.Control
