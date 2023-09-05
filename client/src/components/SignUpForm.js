@@ -2,22 +2,26 @@ import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
+import { ADD_USER } from "../utils/mutations";
 
-const Login = ({setShowSignUp}) => {
+const SignUp = ({ setShowLogin }) => {
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [login] = useMutation(LOGIN_USER);
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [addUser] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...formState },
       });
-      Auth.login(data.login.token);
-      setShowSignUp(true);
+      Auth.login(data.addUser.token);
+      setShowLogin(true);
     } catch (error) {
       setShowAlert(true);
       console.log(error);
@@ -31,7 +35,6 @@ const Login = ({setShowSignUp}) => {
       ...formState,
       [name]: value,
     });
-    setValidated(false);
   };
 
   return (
@@ -39,6 +42,24 @@ const Login = ({setShowSignUp}) => {
       <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
         Incorrect login!
       </Alert>
+
+      <Form.Group>
+        <Form.Label htmlFor="username">Username</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Your username"
+          name="username"
+          value={formState.username}
+          onChange={handleInputChange}
+          required
+        />
+        {validated && !formState.username && (
+        <Form.Control.Feedback type="invalid">
+          Username is required!
+        </Form.Control.Feedback>
+        )}
+      </Form.Group>
+
       <Form.Group>
         <Form.Label htmlFor="email">Email</Form.Label>
         <Form.Control
@@ -68,14 +89,16 @@ const Login = ({setShowSignUp}) => {
           Password is required!
         </Form.Control.Feedback>
       </Form.Group>
-      <Button disabled={!(formState.email && formState.password)} type="submit">
-        Log In
-      </Button>
-      <Button variant="link" onClick={() => setShowSignUp(true)}>
-        Don't have an account? Sign up here!
+      <Button
+        disabled={
+          !(formState.username && formState.email && formState.password)
+        }
+        type="submit"
+      >
+        Sign Up!
       </Button>
     </Form>
   );
 };
 
-export default Login;
+export default SignUp;
