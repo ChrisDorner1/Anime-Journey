@@ -58,16 +58,17 @@ export default function Search() {
             ) : (
           <ul className="lists">
             {animeData.map((anime) => (
-              
-              <li key={anime.title}>
-                <img src={anime.imageURL} alt={anime.image_url} />
+
+              <ul key={anime.title}>
+                <img src={anime.title} alt={anime.image_url} />
+
                 <h3>{anime.title}</h3>
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
                 <button onClick={() => handleAddToList(anime.title)}>
                   Add to List
                 </button>
-              </li>
+              </ul>
             ))}
           </ul>
         )}
