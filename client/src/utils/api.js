@@ -13,7 +13,7 @@ export const fetchAnime = async (query) => {
 
         const animeArray = animeData.map((anime) => ({
             title: anime.title || "",
-            imageURL: anime.image_url || "",
+            imageURL: anime.images.jpg.image_url || "",
             episodes: anime.episodes || "",
             status: anime.status || ""
         }));

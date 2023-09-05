@@ -62,7 +62,7 @@ export default function Search() {
             {animeData.map((anime) => (
 
               <ul key={anime.title}>
-                <img src={anime.title} alt={anime.image_url} />
+                <img src={anime.imageURL} alt={anime.title} />
 
                 <h3>{anime.title}</h3>
                 <p>Episodes: {anime.episodes}</p>
