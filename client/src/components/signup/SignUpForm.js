@@ -64,6 +64,7 @@ const SignUp = ({ setShowSignUp, setShowLogin }) => {
           value={formState.username}
           onChange={handleInputChange}
           required
+          autoComplete="username"
         />
         {validated && !formState.username && (
           <Form.Control.Feedback type="invalid">
@@ -81,9 +82,10 @@ const SignUp = ({ setShowSignUp, setShowLogin }) => {
           value={formState.email}
           onChange={handleInputChange}
           required
+          autoComplete="email"
         />
         <Form.Control.Feedback type="invalid">
-          Email is required!
+          {/* Email is required! */}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -98,7 +100,7 @@ const SignUp = ({ setShowSignUp, setShowLogin }) => {
           required
         />
         <Form.Control.Feedback type="invalid">
-          Password is required!
+          {/* Password is required! */}
         </Form.Control.Feedback>
       </Form.Group>
       <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
