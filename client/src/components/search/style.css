@@ -17,6 +17,8 @@
   }
 
   .lists {
+    
+    text-align: center;
     overflow-y: auto;
     flex-grow: 1;
     padding: 1rem;

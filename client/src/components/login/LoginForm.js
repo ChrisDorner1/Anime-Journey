@@ -3,6 +3,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
+import "./style.css";
 
 const Login = ({ setShowSignUp, setShowLogin }) => {
   const [validated, setValidated] = useState(false);
@@ -32,6 +33,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
       [name]: value,
     });
   };
+
 
   const handleLogin = async () => {
     if (formState.email && formState.password) {
@@ -88,6 +90,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
         Don't have an account? Sign up here!
       </Button>
     </Form>
+
   );
 };
 
