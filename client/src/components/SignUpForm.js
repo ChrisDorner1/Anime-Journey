@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import Auth from "../../utils/auth";
+import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../utils/mutations";
-import "./style.css";
+import { ADD_USER } from "../utils/mutations";
 
-const Login = ({ setShowSignUp, setShowLogin }) => {
+const SignUp = ({ setShowSignUp, setShowLogin }) => {
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [login] = useMutation(LOGIN_USER);
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [addUser] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...formState },
       });
-      Auth.login(data.login.token);
-      setShowSignUp(true);
+      Auth.login(data.addUser.token);
+      setShowLogin(true);
     } catch (error) {
       setShowAlert(true);
       console.log(error);
@@ -34,15 +37,14 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
     });
   };
 
-
-  const handleLogin = async () => {
-    if (formState.email && formState.password) {
+  const handleSignUp = async () => {
+    if (formState.username && formState.email && formState.password) {
       try {
-        const { data } = await login({
+        const { data } = await addUser({
           variables: { ...formState },
         });
-        Auth.login(data.login.token);
-        setShowSignUp(true);
+        Auth.login(data.addUser.token);
+        setShowLogin(true);
       } catch (error) {
         setShowAlert(true);
       }
@@ -54,6 +56,23 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group>
+        <Form.Label htmlFor="username">Username</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Your username"
+          name="username"
+          value={formState.username}
+          onChange={handleInputChange}
+          required
+        />
+        {validated && !formState.username && (
+          <Form.Control.Feedback type="invalid">
+            Username is required!
+          </Form.Control.Feedback>
+        )}
+      </Form.Group>
+
+      <Form.Group>
         <Form.Label htmlFor="email">Email</Form.Label>
         <Form.Control
           type="email"
@@ -64,7 +83,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
           required
         />
         <Form.Control.Feedback type="invalid">
-          {/* Email is required! */}
+          Email is required!
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -79,19 +98,15 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
           required
         />
         <Form.Control.Feedback type="invalid">
-          {/* Password is required! */}
+          Password is required!
         </Form.Control.Feedback>
       </Form.Group>
       <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
         Incorrect login!
       </Alert>
-      <Button onClick={handleLogin}>Log In</Button>
-      <Button variant="link" onClick={() => setShowSignUp(true)}>
-        Don't have an account? Sign up here!
-      </Button>
+      <Button onClick={handleSignUp}>Sign Up!</Button>
     </Form>
-
   );
 };
 
-export default Login;
+export default SignUp;
