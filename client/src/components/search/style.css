@@ -29,3 +29,21 @@
     margin-bottom: auto;
   }
   
+
+  .list {
+    background-color: black;
+    height: 60vh;
+    width: 80vh;
+    padding: 1rem;
+    border: 1px solid white;
+}
+
+.list-column {
+    display:flex;
+    flex-direction: column;
+    margin-bottom: auto;
+}
+
+.list-column a {
+    text-decoration: none;
+}

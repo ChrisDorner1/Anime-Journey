@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import "./App.css";
 import Home from "./components/homepage/homepage";
 import Header from "./components/header/header";
-import Login from "./components/login/login.js";
+import Login from "./components/login/LoginForm";
 import Contact from "./components/contact/contact.js";
 import Footer from "./components/footer/footer.js";
 import Search from "./components/search/search.js";
