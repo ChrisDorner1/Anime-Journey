@@ -3,6 +3,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const Login = ({ setShowSignUp, setShowLogin }) => {
@@ -52,9 +53,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   };
 
   return (
-    <div className="login">
-
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form className="login" noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group>
         <Form.Label htmlFor="email">Email</Form.Label>
         <Form.Control
@@ -64,6 +63,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
           value={formState.email}
           onChange={handleInputChange}
           required
+          autoComplete="email" 
         />
         <Form.Control.Feedback type="invalid">
           {/* Email is required! */}
@@ -79,6 +79,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
           value={formState.password}
           onChange={handleInputChange}
           required
+          autoComplete="password"
         />
         <Form.Control.Feedback type="invalid">
           {/* Password is required! */}
@@ -87,12 +88,13 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
       <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
         Incorrect login!
       </Alert>
-      <Button onClick={handleLogin}>Log In</Button>
-      <Button className="nav-link" href="/signup" variant="link" onClick={() => setShowSignUp(true)}>
-        Don't have an account? Sign up here!
-      </Button>
+      <div className="login-buttons">
+        <Button onClick={handleLogin}>Log In</Button>
+        <Link to="/signup">
+          <Button className="nav-link">Don't have an account? Sign up here!</Button>
+        </Link>
+      </div>
     </Form>
-    </div>
   );
 };
 
