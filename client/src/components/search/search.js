@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
 import { fetchAnime } from "../../utils/api";
@@ -9,10 +9,22 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
-  const handleSearchChange = (e) => {
-    setAnime(e.target.value);
-  };
-  
+
+  const handleImage = (e) => {
+    const [imageLink, setImageLink] = useState('')
+
+    useEffect(() => {
+      fetchAnime(getAnime)
+      .then((data) => {
+        const imageUrl = data[0]?.images?.jpg?.image_url || ""
+        setImageLink(imageUrl)
+        console.log(imageUrl)
+      })
+    })
+  }
+
+  handleImage()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (getAnime) {
