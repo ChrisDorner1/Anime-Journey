@@ -62,8 +62,9 @@ a {
 }
 
 button {
+  padding: 0 !important;
   margin: 1rem;
-  color: black
+  color: black;
 }
 
 input {
@@ -82,7 +83,7 @@ li {
 }
 
 form {
-  margin: 1rem;
+  margin: 0 !important;
 }
 
 div.footer {
@@ -166,6 +167,10 @@ div.footer {
   }
 
   .login {
+    width: 100% !important;
+  }
+
+  .signup {
     width: 100% !important;
   }
 
