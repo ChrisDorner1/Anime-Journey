@@ -9,7 +9,9 @@ const resolvers = {
         lists: async () => {
             return List.find();
         },
-        
+        users: async () => {
+            return User.find();
+        },
         user: async (parent, {userId}) => {
             return User.findOne({ _id: userId})
         },

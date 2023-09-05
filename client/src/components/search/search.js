@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import "./style.css";
-
+import { ADD_TO_WATCH_LIST } from "../../utils/actions";
+import reducer from '../../utils/reducers';
 import { fetchAnime } from "../../utils/api";
+import { useListContext } from "../../utils/GlobalState";
 
 export default function Search() {
   const [getAnime, setAnime] = useState("");
   const [animeData, setAnimeData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+  const initialState = useListContext();
+  const [state, dispatch] = useReducer(reducer, initialState);
   const handleSearchChange = (e) => {
     setAnime(e.target.value);
   };
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (getAnime) {
@@ -65,7 +67,9 @@ export default function Search() {
                 <h3>{anime.title}</h3>
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
-                <button onClick={() => handleAddToList(anime.title)}>
+                <button onClick={() => { handleAddToList(anime.title)
+                return dispatch({ type: ADD_TO_WATCH_LIST, payload: {name: anime.title, poster: anime.image_url}})
+                }}>
                   Add to List
                 </button>
               </ul>

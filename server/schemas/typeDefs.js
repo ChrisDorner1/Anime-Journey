@@ -17,13 +17,14 @@ const typeDefs = gql`
     }
 
     type Auth {
-        token: ID!
+        token: ID
         user: User
     }
 
     type Query {
         lists: [List]
         user(username: String!): User 
+        users: User
     }
 
     type Mutation {
@@ -34,7 +35,6 @@ const typeDefs = gql`
         updateList(animes: [String], name: String, createdBy: String): List
         addToWatchList(listId: ID!, animeName: String!, animePoster: String!): List
     }
-
 `;
 
 module.exports = typeDefs;
