@@ -7,7 +7,7 @@ import { LOGIN_USER } from "../utils/mutations";
 const Login = () => {
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [login] = useMutation(LOGIN_USER);
   const [formState, setFormState] = useState({ email: "", password: "" });
 
   const handleSubmit = async (e) => {
@@ -33,8 +33,8 @@ const Login = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Alert dismissable onClose={() => setShowAlert(false)} show={showAlert}>
+    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
         Incorrect login!
       </Alert>
       <Form.Group>
@@ -47,7 +47,7 @@ const Login = () => {
           onChange={handleInputChange}
           required
         />
-        <Form.Control.Feedback type="invaild">
+        <Form.Control.Feedback type="invalid">
           Email is required!
         </Form.Control.Feedback>
       </Form.Group>
@@ -62,7 +62,7 @@ const Login = () => {
           onChange={handleInputChange}
           required
         />
-        <Form.Control.Feedback type="invaild">
+        <Form.Control.Feedback type="invalid">
           Password is required!
         </Form.Control.Feedback>
       </Form.Group>

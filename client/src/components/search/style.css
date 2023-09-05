@@ -1,0 +1,31 @@
+.search {
+    background-color: black;
+    height: 60vh;
+    width: 80vh;
+    padding: 1rem;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .results {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
+
+  .lists {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 1rem;
+    max-height: calc(100vh - 2rem);
+    margin: 0;
+    padding: 0;
+  }
+
+  form {
+    margin: 1rem;
+    margin-bottom: auto;
+  }
+  
