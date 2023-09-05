@@ -12,4 +12,5 @@ const animeSchema = new Schema({
 });
 
 const Anime = model('Anime', animeSchema)
-model.exports = Anime;
+
+module.exports = Anime;

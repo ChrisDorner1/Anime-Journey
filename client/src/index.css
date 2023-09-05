@@ -18,6 +18,10 @@
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   opacity: 1;
   top: 0;
@@ -52,6 +56,11 @@ div {
   padding: 1rem;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 button {
   margin: 1rem;
   color: black
@@ -59,7 +68,8 @@ button {
 
 input {
   margin: 1rem;
-  color: black
+  color: black;
+  text-align: left;
 }
 
 ul {
@@ -71,10 +81,108 @@ li {
   margin: 1rem;
 }
 
+form {
+  margin: 1rem;
+}
+
 div.footer {
   padding: .5rem;
   text-align: center;
   margin-top: auto;
   bottom: 0;
   z-index: 2;
+}
+
+@media screen and (max-width: 600px) {
+  *{
+    text-align: center;
+
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;
+    background-color:black;
+    background-image: none;
+    perspective: 1px;
+    overflow-x: hidden;
+    background-color: black;
+    background-image: url(./assets/images/night.gif);
+    background-position: bottom;
+  }
+
+  body {
+    width: 100%;
+    /* background-color: black;
+    background-image: url(./assets/images/night.gif);
+    background-position: initial;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; */
+
+  }
+
+  .app {
+    background-image: url(./assets/images/night.gif);
+    background-position: initial;
+    background-size: contain !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat;
+    padding: 0;
+    height: 100% ;
+    width: 100% ;
+  }
+
+  .header {
+    width: 80%;
+  }
+
+  .nav {
+    width: 20%;
+  }
+
+  .home {
+    width: 100% !important;
+  }
+
+  .search {
+    width: 100% !important;
+  }
+
+  .list {
+    width: 100% !important;
+  }
+
+  .results {
+    width: 100% !important;
+  }
+
+  .lists {
+    width: 100% !important;
+  }
+
+  .contact {
+    width: 100% !important;
+  }
+
+  .login {
+    width: 100% !important;
+  }
+
+  .card-header {
+    width: 100% !important;
+  }
+
+  .footer {
+    width: 80%;
+  }
+
+  div {
+    padding: 0;
+  }
+
+  ul {
+    margin: 10px;
+  }
+
 }

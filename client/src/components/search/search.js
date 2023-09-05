@@ -1,30 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useReducer } from "react";
 import "./style.css";
-
+import { ADD_TO_WATCH_LIST } from "../../utils/actions";
+import reducer from '../../utils/reducers';
 import { fetchAnime } from "../../utils/api";
+import { useListContext } from "../../utils/GlobalState";
 
 export default function Search() {
   const [getAnime, setAnime] = useState("");
   const [animeData, setAnimeData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
-
-  const handleImage = (e) => {
-    const [imageLink, setImageLink] = useState('')
-
-    useEffect(() => {
-      fetchAnime(getAnime)
-      .then((data) => {
-        const imageUrl = data[0]?.images?.jpg?.image_url || ""
-        setImageLink(imageUrl)
-        console.log(imageUrl)
-      })
-    })
-  }
-
-  handleImage()
-
+  const initialState = useListContext();
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const handleSearchChange = (e) => {
+    setAnime(e.target.value);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (getAnime) {
@@ -69,16 +59,19 @@ export default function Search() {
             ) : (
               <ul className="lists">
             {animeData.map((anime) => (
-              
-              <li key={anime.title}>
-                <img src={`https://cdn.myanimelist.net/images/anime/4/${anime}`} alt={anime.image_url} />
+
+              <ul key={anime.title}>
+                <img src={anime.imageURL} alt={anime.title} />
+
                 <h3>{anime.title}</h3>
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
-                <button onClick={() => handleAddToList(anime.title)}>
+                <button onClick={() => { handleAddToList(anime.title)
+                return dispatch({ type: ADD_TO_WATCH_LIST, payload: {name: anime.title, poster: anime.image_url}})
+                }}>
                   Add to List
                 </button>
-              </li>
+              </ul>
             ))}
           </ul>
         )}
