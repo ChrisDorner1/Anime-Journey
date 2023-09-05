@@ -5,15 +5,7 @@ import "./style.css";
 export default function Home() {
   return (
       <div className="home">
-      <ul placeholder="List One"> Have you watched anything on this list?
-      <button>Open list</button>
-      </ul>
-      <ul placeholder="List Two"> Have you watched anything on this list?
-      <button>Open list</button>
-      </ul>
-      <ul placeholder="List Three"> Have you watched anything on this list?
-      <button>Open list</button>
-      </ul>
+      <h2 placeholder="List One" className="holder"> Have you watched anything recently?</h2>
       </div>
   );
 }

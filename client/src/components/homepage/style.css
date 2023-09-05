@@ -5,3 +5,9 @@
     padding: 1rem;
     border: 1px solid white;
 }
+
+
+.home h2 {
+    display: flex;
+    margin-top: -400px;
+}

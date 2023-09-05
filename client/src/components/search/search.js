@@ -34,11 +34,10 @@ export default function Search() {
       });
     }
   };
-  // console.log(animeData.images.image_url)
   const handleAddToList = (animeTitle) => {
     console.log(`Added ${animeTitle} to the list.`);
   };
-  
+  console.log(animeData)
   return (
     <div className="search">
       <form onSubmit={handleSubmit}>
@@ -56,11 +55,11 @@ export default function Search() {
           ) : error ? (
             <p>Error: {error}</p>
             ) : (
-          <ul className="lists">
+              <ul className="lists">
             {animeData.map((anime) => (
               
               <li key={anime.title}>
-                <img src={anime.imageURL} alt={anime.image_url} />
+                <img src={`https://cdn.myanimelist.net/images/anime/4/${anime}`} alt={anime.image_url} />
                 <h3>{anime.title}</h3>
                 <p>Episodes: {anime.episodes}</p>
                 <p>Status: {anime.status}</p>
