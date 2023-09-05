@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
+import { LOGIN_USER } from "../../utils/mutations";
 
 const Login = () => {
   const [validated, setValidated] = useState(false);
@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await login({
-        variables: { ...formState },
+        variables: { email: formState.email, password: formState.password },
       });
       Auth.login(data.login.token);
     } catch (error) {
@@ -33,15 +33,31 @@ const Login = () => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={validated} onSubmit={handleSubmit} >
       <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
         Incorrect login!
       </Alert>
-      <Form.Group>
+
+      <div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="true" href="#">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Sign Up</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
+        Incorrect login!
+      </Alert>
+      <Form.Group className="login-input">
         <Form.Label>Email</Form.Label>
         <Form.Control
           type="email"
-          placeholder="Your email"
+          placeholder="Beepus@leepus.com"
           name="email"
           value={formState.email}
           onChange={handleInputChange}
@@ -51,12 +67,11 @@ const Login = () => {
           Email is required!
         </Form.Control.Feedback>
       </Form.Group>
-
       <Form.Group>
         <Form.Label>Password</Form.Label>
         <Form.Control
           type="password"
-          placeholder="Your password"
+          placeholder="Password1234"
           name="password"
           value={formState.password}
           onChange={handleInputChange}
@@ -69,6 +84,8 @@ const Login = () => {
       <Button disabled={!(formState.email && formState.password)} type="submit">
         Log In
       </Button>
+  </div>
+</div>
     </Form>
   );
 };
