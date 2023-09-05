@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Alert dismissable onClose={() => setShowAlert(false)} show={showAlert}>
         Incorrect login!
       </Alert>
