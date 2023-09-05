@@ -36,11 +36,10 @@ export default function Search() {
       });
     }
   };
-  // console.log(animeData.images.image_url)
   const handleAddToList = (animeTitle) => {
     console.log(`Added ${animeTitle} to the list.`);
   };
-  
+  console.log(animeData)
   return (
     <div className="search">
       <form onSubmit={handleSubmit}>
@@ -58,7 +57,7 @@ export default function Search() {
           ) : error ? (
             <p>Error: {error}</p>
             ) : (
-          <ul className="lists">
+              <ul className="lists">
             {animeData.map((anime) => (
 
               <ul key={anime.title}>
