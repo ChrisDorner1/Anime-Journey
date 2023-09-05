@@ -1,4 +1,4 @@
-.login-container {
+.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,13 +9,39 @@
     height: 60vh;
     width: 80vh;
   }
-  
-  .login-list {
+
+  .nav-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+
+  .nav-link {
+    padding: 1rem;
+  }
+
+/*   
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    margin: 1rem;
+  }
+
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 60vh;
+    width: 80vh;
     margin: 1rem;
     margin-bottom: auto;
   }
@@ -30,4 +56,4 @@
   }
 
  
-  
+   */

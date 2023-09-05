@@ -3,6 +3,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
+import "./style.css";
 
 const Login = () => {
   const [validated, setValidated] = useState(false);
@@ -33,60 +34,65 @@ const Login = () => {
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit} >
-      <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
-        Incorrect login!
-      </Alert>
-
-      <div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="true" href="#">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/signup">Sign Up</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
-        Incorrect login!
-      </Alert>
-      <Form.Group className="login-input">
-        <Form.Label>Email</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Beepus@leepus.com"
-          name="email"
-          value={formState.email}
-          onChange={handleInputChange}
-          required
-        />
-        <Form.Control.Feedback type="invalid">
-          Email is required!
-        </Form.Control.Feedback>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password1234"
-          name="password"
-          value={formState.password}
-          onChange={handleInputChange}
-          required
-        />
-        <Form.Control.Feedback type="invalid">
-          Password is required!
-        </Form.Control.Feedback>
-      </Form.Group>
-      <Button disabled={!(formState.email && formState.password)} type="submit">
-        Log In
-      </Button>
-  </div>
-</div>
-    </Form>
+    <div className="login">
+      {/* <div className="card-header">
+          <ul className="nav-item">
+            <a className="nav-link active" aria-current="true" href="#">
+              Login
+            </a>
+            <a className="nav-link" href="/signup">
+              Sign Up
+            </a>
+          </ul> */}
+      <div className="card-body">
+      <div className="card-header">
+          <ul className="nav-item">
+            <a className="nav-link active" aria-current="true" href="#">
+              Login
+            </a>
+            <a className="nav-link" href="/signup">
+              Sign Up
+            </a>
+          </ul>
+        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
+          Incorrect login!
+        </Alert>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form.Group className="login-input">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Beepus@leepus.com"
+              name="email"
+              value={formState.email}
+              onChange={handleInputChange}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Email is required!
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group className="login-input">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password1234"
+              name="password"
+              value={formState.password}
+              onChange={handleInputChange}
+              required
+            />
+            <Form.Control.Feedback type="invalid">
+              Password is required!
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Button disabled={!(formState.email && formState.password)} type="submit">
+            Log In
+          </Button>
+        </Form>
+      </div>
+      </div>
+    </div>
   );
 };
 
