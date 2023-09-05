@@ -4,7 +4,7 @@ import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 
-const SignUp = ({ setShowLogin }) => {
+const SignUp = ({ setShowSignUp, setShowLogin }) => {
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [addUser] = useMutation(ADD_USER);
@@ -37,12 +37,24 @@ const SignUp = ({ setShowLogin }) => {
     });
   };
 
+  const handleSignUp = async () => {
+    if (formState.username && formState.email && formState.password) {
+      try {
+        const { data } = await addUser({
+          variables: { ...formState },
+        });
+        Auth.login(data.addUser.token);
+        setShowLogin(true);
+      } catch (error) {
+        setShowAlert(true);
+      }
+    } else {
+      setShowAlert(true);
+    }
+  };
+
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
-        Incorrect login!
-      </Alert>
-
       <Form.Group>
         <Form.Label htmlFor="username">Username</Form.Label>
         <Form.Control
@@ -54,9 +66,9 @@ const SignUp = ({ setShowLogin }) => {
           required
         />
         {validated && !formState.username && (
-        <Form.Control.Feedback type="invalid">
-          Username is required!
-        </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Username is required!
+          </Form.Control.Feedback>
         )}
       </Form.Group>
 
@@ -89,14 +101,10 @@ const SignUp = ({ setShowLogin }) => {
           Password is required!
         </Form.Control.Feedback>
       </Form.Group>
-      <Button
-        disabled={
-          !(formState.username && formState.email && formState.password)
-        }
-        type="submit"
-      >
-        Sign Up!
-      </Button>
+      <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert}>
+        Incorrect login!
+      </Alert>
+      <Button onClick={handleSignUp}>Sign Up!</Button>
     </Form>
   );
 };

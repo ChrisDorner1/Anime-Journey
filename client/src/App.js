@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./components/homepage/homepage";
 import Header from "./components/header/header";
 import Login from "./components/login/LoginForm";
+import SignUp from "./components/SignUpForm";
 import Contact from "./components/contact/contact.js";
 import Footer from "./components/footer/footer.js";
 import Search from "./components/search/search.js";
@@ -40,6 +41,7 @@ function App() {
             <Routes className="nav">
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<SignUp />} />
               <Route path="/search" element={<Search />} />
               <Route path="/list" element={<List />} />
               <Route path="/contact" element={<Contact />} />
