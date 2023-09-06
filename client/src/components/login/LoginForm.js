@@ -13,6 +13,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
 
   const handleSubmit = async (e) => {
+    console.log("handleSubmit")
     e.preventDefault();
     try {
       const { data } = await login({
@@ -36,7 +37,9 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   };
 
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    console.log("handLogin")
+    e.preventDefault()
     if (formState.email && formState.password) {
       try {
         const { data } = await login({
@@ -89,7 +92,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
         Incorrect login!
       </Alert>
       <div className="login-buttons">
-        <Button onClick={handleLogin}>Log In</Button>
+        <Button type="submit">Log In</Button>
         <Link to="/signup">
           <Button className="nav-link">Don't have an account? Sign up here!</Button>
         </Link>
