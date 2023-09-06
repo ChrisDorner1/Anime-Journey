@@ -1,0 +1,26 @@
+.header {
+    margin-bottom: auto;
+}
+
+.glowing-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    padding: .5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+  }
+
+a:hover {
+    color: darkorchid;
+  }
