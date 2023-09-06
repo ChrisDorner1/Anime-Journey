@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config()
+require('dotenv').config({path: ""})
 
-const secret = process.env.JWTSECRET;
+const secret = "secret";
 const expiration = '2h';
 
 module.exports = {
@@ -23,6 +23,7 @@ module.exports = {
     },
     signToken: function (user) {
         const payload = {userId: user._id, username: user.username, email: user.email };
+        console.log(" test",secret)
         if(!secret) { 
             throw new Error("JWT secret key not defined")
         }

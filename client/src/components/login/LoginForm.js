@@ -12,7 +12,12 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   const [login] = useMutation(LOGIN_USER);
   const [formState, setFormState] = useState({ email: "", password: "" });
 
+  const handleLogout = () => {
+    Auth.logout()
+  }
+
   const handleSubmit = async (e) => {
+    console.log("handleSubmit")
     e.preventDefault();
     try {
       const { data } = await login({
@@ -36,7 +41,9 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   };
 
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    console.log("handLogin")
+    e.preventDefault()
     if (formState.email && formState.password) {
       try {
         const { data } = await login({
@@ -53,7 +60,18 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   };
 
   return (
-    <Form className="login" noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form className="login" noValidate validated={validated} onSubmit={handleSubmit}> 
+          <div>
+        {Auth.loggedIn() ? (
+          <Button onClick={handleLogout}>Logout</Button>
+        ): (
+          <Form
+          noValidate
+          validated={validated}
+          onSubmit={handleSubmit}>
+          </Form>
+        )}
+      </div>
       <Form.Group>
         <Form.Label htmlFor="email">Email</Form.Label>
         <Form.Control
@@ -89,7 +107,7 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
         Incorrect login!
       </Alert>
       <div className="login-buttons">
-        <Button onClick={handleLogin}>Log In</Button>
+        <Button type="submit">Log In</Button>
         <Link to="/signup">
           <Button className="nav-link">Don't have an account? Sign up here!</Button>
         </Link>
