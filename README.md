@@ -14,7 +14,7 @@
 
   ## Usage
 
-  Follow the heroku link https://anime-journey-d563ee7b2a5a.herokuapp.com/
+  Follow the heroku link: https://anime-journey-54da7a4ba2d4.herokuapp.com/
 
   ## Credits
 
