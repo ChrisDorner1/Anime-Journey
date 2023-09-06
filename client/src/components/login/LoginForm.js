@@ -12,6 +12,10 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   const [login] = useMutation(LOGIN_USER);
   const [formState, setFormState] = useState({ email: "", password: "" });
 
+  const handleLogout = () => {
+    Auth.logout()
+  }
+
   const handleSubmit = async (e) => {
     console.log("handleSubmit")
     e.preventDefault();
@@ -56,7 +60,18 @@ const Login = ({ setShowSignUp, setShowLogin }) => {
   };
 
   return (
-    <Form className="login" noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form className="login" noValidate validated={validated} onSubmit={handleSubmit}> 
+          <div>
+        {Auth.loggedIn() ? (
+          <Button onClick={handleLogout}>Logout</Button>
+        ): (
+          <Form
+          noValidate
+          validated={validated}
+          onSubmit={handleSubmit}>
+          </Form>
+        )}
+      </div>
       <Form.Group>
         <Form.Label htmlFor="email">Email</Form.Label>
         <Form.Control
